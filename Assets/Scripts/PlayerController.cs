@@ -5,14 +5,23 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    void GetCaught();
+    void GetCaught(Vector3 direction, float force);
 }
 
 public class PlayerController : MonoBehaviour
 {
+    public float catchForce = 100f;
+
+    private Camera mainCamera;
+
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
+
     private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -21,7 +30,7 @@ public class PlayerController : MonoBehaviour
                 IEnemy enemy = hit.transform.GetComponent(typeof(IEnemy)) as IEnemy;
                 if (enemy != null)
                 {
-                    enemy.GetCaught();
+                    enemy.GetCaught(mainCamera.transform.position, catchForce);
                 }
             }
         }

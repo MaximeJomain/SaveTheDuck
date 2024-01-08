@@ -5,16 +5,12 @@ using UnityEngine;
 
 public class DuckController : MonoBehaviour, IEnemy
 {
-    public float catchForce = 20f;
-    
     private new Rigidbody rigidbody;
-    private Camera mainCamera;
     private bool isDead;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        mainCamera = Camera.main;
     }
 
     private void Start()
@@ -22,11 +18,11 @@ public class DuckController : MonoBehaviour, IEnemy
         isDead = false;
     }
 
-    public void GetCaught()
+    public void GetCaught(Vector3 direction, float force)
     {
         if (!isDead)
         {
-            rigidbody.AddForce(mainCamera.transform.position * catchForce);
+            rigidbody.AddForce(direction * force);
             Debug.Log("IEnemy " + transform.gameObject.name);
             isDead = true;
         }
