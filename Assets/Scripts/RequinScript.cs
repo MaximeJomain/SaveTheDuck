@@ -8,7 +8,7 @@ public class RequinScript : MonoBehaviour
 
     public int degatRequin = 50;
 
-    public int vitesseRequin = 6;
+    public int vitesseRequin = 3;
 
 
     public Rigidbody RigidBodyRequin;

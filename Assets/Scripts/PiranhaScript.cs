@@ -8,7 +8,7 @@ public class PiranhaScript : MonoBehaviour
 
     public int degatPiranha = 10;
 
-    public int vitessePiranha = 2;
+    public int vitessePiranha = 1;
 
 
     public Rigidbody RigidBodyPiranha;

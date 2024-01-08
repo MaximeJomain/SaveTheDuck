@@ -8,7 +8,7 @@ public class AnguilleScript : MonoBehaviour
 
     public int degatAnguille = 25;
 
-    public int vitesseAnguille = 4;
+    public int vitesseAnguille = 2;
 
 
     public Rigidbody RigidBodyAnguille;
