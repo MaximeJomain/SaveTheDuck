@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
+    public CanardScript Canard;
+
+
     public GameObject PrefabPiranha;
 
     public GameObject PrefabAnguille;
