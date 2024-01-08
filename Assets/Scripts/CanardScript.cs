@@ -6,7 +6,10 @@ public class CanardScript : MonoBehaviour
 {
     public float vieCanardVie = 100;
 
-    public int vitesseCanard = 5;
+    public int vitesseCanard = 10;
+
+
+    public Rigidbody RigidBodyCannard;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,6 @@ public class CanardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RigidBodyCannard.velocity = new Vector3(vitesseCanard * Input.GetAxis("Horizontal"), RigidBodyCannard.velocity.y, vitesseCanard * Input.GetAxis("Vertical"));
     }
 }
