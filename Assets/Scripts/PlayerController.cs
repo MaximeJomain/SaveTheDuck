@@ -13,10 +13,11 @@ public class PlayerController : MonoBehaviour
     public float catchForce = 100f;
 
     private Camera mainCamera;
-
+    private Animator animator;
     private void Awake()
     {
         mainCamera = Camera.main;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
+            animator.SetTrigger("ThrowLine");
+            
             if (Physics.Raycast(ray, out RaycastHit hit, 100))
             {
                 IEnemy enemy = hit.transform.GetComponent(typeof(IEnemy)) as IEnemy;
