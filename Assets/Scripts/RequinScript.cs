@@ -11,9 +11,9 @@ public class RequinScript : MonoBehaviour
     public int vitesseRequin = 3;
 
 
-    public Rigidbody RigidBodyRequin;
-
     public GameObject Canard;
+
+    public Rigidbody RigidBodyRequin;
 
 
     private void Awake()

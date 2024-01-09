@@ -22,19 +22,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -42,11 +42,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f226efc4634e6c34aa0573aa4692a362, type: 3}
       propertyPath: m_Name
@@ -81,7 +81,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2307643979360067300}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 06eba19d85cdfac4a9906066e07d8092, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -93,8 +93,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.124140665, y: 0.19162112, z: 0.24385622}
-  m_Center: {x: -0.03327658, y: 0.004441589, z: -0.031136839}
+  m_Size: {x: 0.11, y: 0.15, z: 0.22}
+  m_Center: {x: -0.035, y: 0.008, z: -0.025}
 --- !u!54 &3100754717994081768
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,5 +149,5 @@ MonoBehaviour:
   viePiranha: 1
   degatPiranha: 10
   vitessePiranha: 1
-  RigidBodyPiranha: {fileID: 3100754717994081768}
   Canard: {fileID: 0}
+  RigidBodyPiranha: {fileID: 3100754717994081768}

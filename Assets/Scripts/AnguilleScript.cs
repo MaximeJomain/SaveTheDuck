@@ -11,9 +11,9 @@ public class AnguilleScript : MonoBehaviour
     public int vitesseAnguille = 2;
 
 
-    public Rigidbody RigidBodyAnguille;
-
     public GameObject Canard;
+
+    public Rigidbody RigidBodyAnguille;
 
 
     private void Awake()

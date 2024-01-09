@@ -8,12 +8,12 @@ public class PiranhaScript : MonoBehaviour
 
     public int degatPiranha = 10;
 
-    public int vitessePiranha = 1;
+    public float vitessePiranha = 1f;
 
-
-    public Rigidbody RigidBodyPiranha;
 
     public GameObject Canard;
+
+    public Rigidbody RigidBodyPiranha;
 
     private void Awake()
     {
@@ -32,6 +32,8 @@ public class PiranhaScript : MonoBehaviour
         Vector3 vector3 = new Vector3(Canard.transform.position.x - transform.position.x, RigidBodyPiranha.velocity.y, Canard.transform.position.z - transform.position.z);
         vector3.Normalize();
         RigidBodyPiranha.velocity = vector3 * vitessePiranha;
+
+
     }
 
     public int GetViePiranha()
