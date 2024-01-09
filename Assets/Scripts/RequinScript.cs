@@ -9,15 +9,15 @@ public class RequinScript : MonoBehaviour
     public int degatRequin = 50;
 
     public int vitesseRequin = 3;
-    
-    private Rigidbody RigidBodyRequin;
+
 
     public GameObject Canard;
+
+    public Rigidbody RigidBodyRequin;
 
 
     private void Awake()
     {
-        RigidBodyRequin = GetComponent<Rigidbody>();
         Canard = GameObject.Find("Canard");
     }
 

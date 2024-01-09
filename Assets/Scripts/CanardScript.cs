@@ -17,34 +17,34 @@ public class CanardScript : MonoBehaviour
 
     void Start()
     {
-        vitesseCanard /= 50;
+        vitesseCanard /= 25;
     }
 
 
     private void Update()
     {
         
-        if (Canard.transform.position.z >= 0.3f && Canard.transform.position.x > (-0.9f))
+        if (Canard.transform.position.z >= 0.6f && Canard.transform.position.x > (-2.25f))
         {
             Canard.transform.rotation = Quaternion.Euler(0, 270, 0);
             Canard.transform.Translate(0, 0, vitesseCanard * 0.01f);
         }
         
         
-        if (Canard.transform.position.x <= (-0.9f) && Canard.transform.position.z > (-0.3f))
+        if (Canard.transform.position.x <= (-2.25f) && Canard.transform.position.z > (-0.6f))
         {
             Canard.transform.rotation = Quaternion.Euler(0, 180, 0);
             Canard.transform.Translate(0, 0, vitesseCanard * 0.01f);
         }
         
         
-        if (Canard.transform.position.z <= (-0.3f) && Canard.transform.position.x < (0.9f))
+        if (Canard.transform.position.z <= (-0.6f) && Canard.transform.position.x < (2.25f))
         {
             Canard.transform.rotation = Quaternion.Euler(0, 90, 0);
             Canard.transform.Translate(0, 0, vitesseCanard * 0.01f);
         }
         
-        if (Canard.transform.position.x >= (0.9f) && Canard.transform.position.z < (0.3f))
+        if (Canard.transform.position.x >= (2.25f) && Canard.transform.position.z < (0.6f))
         {
             Canard.transform.rotation = Quaternion.Euler(0, 0, 0);
             Canard.transform.Translate(0, 0, vitesseCanard * 0.01f);
