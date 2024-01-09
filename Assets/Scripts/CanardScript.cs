@@ -23,7 +23,7 @@ public class CanardScript : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (Canard.transform.position.z >= 0.6f && Canard.transform.position.x > (-2.25f))
         {
             Canard.transform.rotation = Quaternion.Euler(0, 270, 0);

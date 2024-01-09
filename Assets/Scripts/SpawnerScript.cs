@@ -51,10 +51,10 @@ public class SpawnerScript : MonoBehaviour
             int Int = Random.Range(0, 4);
             switch (Int)
             {
-                case 0: Instantiate(PrefabPiranha, new Vector3(-0.9f, 0.55f, Random.Range(-0.3f, 0.3f)), Quaternion.Euler(0,270,0)); break;
-                case 1: Instantiate(PrefabPiranha, new Vector3(0.9f, 0.55f, Random.Range(-0.3f, 0.3f)), Quaternion.Euler(0, 270, 0)); break;
-                case 2: Instantiate(PrefabPiranha, new Vector3(Random.Range(-0.9f, 0.9f), 0.55f, -0.3f), Quaternion.Euler(0, 270, 0)); break;
-                case 3: Instantiate(PrefabPiranha, new Vector3(Random.Range(-0.9f, 0.9f), 0.55f, 0.3f), Quaternion.Euler(0, 270, 0)); break;
+                case 0: Instantiate(PrefabPiranha, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0,270,0)); break;
+                case 1: Instantiate(PrefabPiranha, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 270, 0)); break;
+                case 2: Instantiate(PrefabPiranha, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(0, 270, 0)); break;
+                case 3: Instantiate(PrefabPiranha, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(0, 270, 0)); break;
             }
         }
 
@@ -65,10 +65,10 @@ public class SpawnerScript : MonoBehaviour
             int Int = Random.Range(0, 4);
             switch (Int)
             {
-                case 0: Instantiate(PrefabAnguille, new Vector3(-0.9f, 0.55f, Random.Range(-0.3f, 0.3f)), Quaternion.Euler(0, 270, 0)); break;
-                case 1: Instantiate(PrefabAnguille, new Vector3(0.9f, 0.55f, Random.Range(-0.3f, 0.3f)), Quaternion.Euler(0, 270, 0)); break;
-                case 2: Instantiate(PrefabAnguille, new Vector3(Random.Range(-0.9f, 0.9f), 0.55f, -0.3f), Quaternion.Euler(0, 270, 0)); break;
-                case 3: Instantiate(PrefabAnguille, new Vector3(Random.Range(-0.9f, 0.9f), 0.55f, 0.3f), Quaternion.Euler(0, 270, 0)); break;
+                case 0: Instantiate(PrefabAnguille, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
+                case 1: Instantiate(PrefabAnguille, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
+                case 2: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(0, 90, 0)); break;
+                case 3: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(0, 90, 0)); break;
             }
         }
 
@@ -79,10 +79,10 @@ public class SpawnerScript : MonoBehaviour
             int Int = Random.Range(0, 4);
             switch (Int)
             {
-                case 0: Instantiate(PrefabRequin, new Vector3(-1f, 0.6f, Random.Range(-0.3f, 0.3f)), Quaternion.identity); break;
-                case 1: Instantiate(PrefabRequin, new Vector3(1f, 0.6f, Random.Range(-0.3f, 0.3f)), Quaternion.identity); break;
-                case 2: Instantiate(PrefabRequin, new Vector3(Random.Range(-1f, 1f), 0.6f, -0.3f), Quaternion.identity); break;
-                case 3: Instantiate(PrefabRequin, new Vector3(Random.Range(-1f, 1f), 0.6f, 0.3f), Quaternion.identity); break;
+                case 0: Instantiate(PrefabRequin, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
+                case 1: Instantiate(PrefabRequin, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
+                case 2: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(270, 180, 0)); break;
+                case 3: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(270, 180, 0)); break;
             }
         }
     }
