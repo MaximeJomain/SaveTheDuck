@@ -428,6 +428,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canard
       objectReference: {fileID: 0}
+    - target: {fileID: 5968466112715059616, guid: 11091189a8fb8284b85d8925ded4328b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6795168139310772769, guid: 11091189a8fb8284b85d8925ded4328b, type: 3}
       propertyPath: m_Constraints
       value: 112
