@@ -7,7 +7,7 @@ public class DuckController : MonoBehaviour, IEnemy
 {
     private new Rigidbody rigidbody;
     private bool isDead;
-    private Collider collider;
+    private new Collider collider;
 
     private void Awake()
     {
