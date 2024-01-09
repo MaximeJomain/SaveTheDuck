@@ -58,33 +58,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9a262d160e17be438e42040624c455a, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1050263829403836572}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9a262d160e17be438e42040624c455a, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -3455127783159111649}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9a262d160e17be438e42040624c455a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1050263829403836572}
+      addedObject: {fileID: 3091684287375931651}
   m_SourcePrefab: {fileID: 100100000, guid: f9a262d160e17be438e42040624c455a, type: 3}
 --- !u!1 &7915080098760073009 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f9a262d160e17be438e42040624c455a, type: 3}
   m_PrefabInstance: {fileID: 6996740834927747680}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3455127783159111649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7915080098760073009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87139cc1885f3c448b372ce79dcb1d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vieAnguille: 2
-  degatAnguille: 25
-  vitesseAnguille: 2
-  RigidBodyAnguille: {fileID: 1050263829403836572}
-  Canard: {fileID: 0}
 --- !u!54 &1050263829403836572
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -112,3 +98,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3455127783159111649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915080098760073009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87139cc1885f3c448b372ce79dcb1d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vieAnguille: 2
+  degatAnguille: 25
+  vitesseAnguille: 2
+  RigidBodyAnguille: {fileID: 1050263829403836572}
+  Canard: {fileID: 0}
+--- !u!114 &3091684287375931651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915080098760073009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7c940c789b98548877468c5a722dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DuckController : MonoBehaviour, IEnemy
+public class EnemyController : MonoBehaviour, IEnemy
 {
     private new Rigidbody rigidbody;
     private bool isDead;
