@@ -15,6 +15,13 @@ public class PlayerController : MonoBehaviour
     public Transform lineStart;
     public GameObject scriptTarget;
 
+    [Header("Fishing Rod Settings")]
+    public float minX;
+    public float maxX;
+    public float minZ;
+    public float maxZ;
+    public float rodSpeed;
+
     private Camera mainCamera;
     private Animator animator;
     private LineRenderer fishLine;
@@ -28,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        rodSpeed /= 100;
+        
         fishLine = fishingRod.gameObject.AddComponent<LineRenderer>();
         v1 = lineStart.position;
         v2 = scriptTarget.transform.position;
@@ -73,9 +82,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Mouse X") > 0 
             || Input.GetAxis("Mouse X") < 0)
         {
-            fishingRod.transform.position += new Vector3(Input.GetAxis("Mouse X") * 0.02f, 0f, 0f);
+            fishingRod.transform.position += new Vector3(Input.GetAxis("Mouse X") * rodSpeed, 0f, 0f);
             var pos = fishingRod.transform.position;
-            pos.x = Mathf.Clamp(fishingRod.transform.position.x, 1f, 1.25f);
+            pos.x = Mathf.Clamp(fishingRod.transform.position.x, minX, maxX);
             fishingRod.transform.position = pos;
         }
         
@@ -83,9 +92,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Mouse Y") > 0 
             || Input.GetAxis("Mouse Y") < 0)
         {
-            fishingRod.transform.position += new Vector3(0f, 0f, Input.GetAxis("Mouse Y") * 0.02f);
+            fishingRod.transform.position += new Vector3(0f, 0f, Input.GetAxis("Mouse Y") * rodSpeed);
             var pos = fishingRod.transform.position;
-            pos.z = Mathf.Clamp(fishingRod.transform.position.z, 0.1f, 0.4f);
+            pos.z = Mathf.Clamp(fishingRod.transform.position.z, minZ, maxZ);
             fishingRod.transform.position = pos;
         }
     }

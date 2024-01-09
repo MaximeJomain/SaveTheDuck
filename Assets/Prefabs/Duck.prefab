@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1604110309910192654}
   - component: {fileID: 743078621841904300}
-  - component: {fileID: 6795168139310772769}
+  - component: {fileID: 7212633826819507720}
+  - component: {fileID: 2828105395433793556}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 365182284768745294}
@@ -41,7 +42,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5968466112715059616}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 06eba19d85cdfac4a9906066e07d8092, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -55,33 +56,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3895217, y: 0.76132345, z: 0.9621302}
   m_Center: {x: 0.0053846985, y: 0.3710665, z: -0.0653258}
---- !u!54 &6795168139310772769
-Rigidbody:
+--- !u!114 &7212633826819507720
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5968466112715059616}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428c55634c86ed348bec4174e14662e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vieCanardVie: 100
+  vitesseCanard: 5
+--- !u!114 &2828105395433793556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968466112715059616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a16916cd0e6f94da8aa43c9960c06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &187983670896062629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,7 +104,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 52a5c79626e2e334b8db8a19c4fdf05f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52a5c79626e2e334b8db8a19c4fdf05f, type: 3}
       propertyPath: m_LocalPosition.y

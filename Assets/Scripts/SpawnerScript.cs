@@ -58,32 +58,32 @@ public class SpawnerScript : MonoBehaviour
             }
         }
 
-        if (Time.time > nouveauSpawnAnguille)
-        {
-            nouveauSpawnAnguille = Time.time + vitesseDeSpawnAnguille;
-
-            int Int = Random.Range(0, 4);
-            switch (Int)
-            {
-                case 0: Instantiate(PrefabAnguille, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
-                case 1: Instantiate(PrefabAnguille, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
-                case 2: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(0, 90, 0)); break;
-                case 3: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(0, 90, 0)); break;
-            }
-        }
-
-        if (Time.time > nouveauSpawnRequin)
-        {
-            nouveauSpawnRequin = Time.time + vitesseDeSpawnRequin;
-
-            int Int = Random.Range(0, 4);
-            switch (Int)
-            {
-                case 0: Instantiate(PrefabRequin, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
-                case 1: Instantiate(PrefabRequin, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
-                case 2: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(270, 180, 0)); break;
-                case 3: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(270, 180, 0)); break;
-            }
-        }
+        // if (Time.time > nouveauSpawnAnguille)
+        // {
+        //     nouveauSpawnAnguille = Time.time + vitesseDeSpawnAnguille;
+        //
+        //     int Int = Random.Range(0, 4);
+        //     switch (Int)
+        //     {
+        //         case 0: Instantiate(PrefabAnguille, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
+        //         case 1: Instantiate(PrefabAnguille, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
+        //         case 2: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(0, 90, 0)); break;
+        //         case 3: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(0, 90, 0)); break;
+        //     }
+        // }
+        //
+        // if (Time.time > nouveauSpawnRequin)
+        // {
+        //     nouveauSpawnRequin = Time.time + vitesseDeSpawnRequin;
+        //
+        //     int Int = Random.Range(0, 4);
+        //     switch (Int)
+        //     {
+        //         case 0: Instantiate(PrefabRequin, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
+        //         case 1: Instantiate(PrefabRequin, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
+        //         case 2: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(270, 180, 0)); break;
+        //         case 3: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(270, 180, 0)); break;
+        //     }
+        // }
     }
 }
