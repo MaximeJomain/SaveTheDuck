@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        MoveMouse();
+        
         v1 = lineStart.position;
         fishLine.SetPosition (0, v1);
         v2 = scriptTarget.transform.position;
@@ -63,6 +65,28 @@ public class PlayerController : MonoBehaviour
                     enemy.GetCaught(mainCamera.transform.position, catchForce);
                 }
             }
+        }
+    }
+
+    private void MoveMouse()
+    {
+        if (Input.GetAxis("Mouse X") > 0 
+            || Input.GetAxis("Mouse X") < 0)
+        {
+            fishingRod.transform.position += new Vector3(Input.GetAxis("Mouse X") * 0.02f, 0f, 0f);
+            var pos = fishingRod.transform.position;
+            pos.x = Mathf.Clamp(fishingRod.transform.position.x, 1f, 1.25f);
+            fishingRod.transform.position = pos;
+        }
+        
+        
+        if (Input.GetAxis("Mouse Y") > 0 
+            || Input.GetAxis("Mouse Y") < 0)
+        {
+            fishingRod.transform.position += new Vector3(0f, 0f, Input.GetAxis("Mouse Y") * 0.02f);
+            var pos = fishingRod.transform.position;
+            pos.z = Mathf.Clamp(fishingRod.transform.position.z, 0.1f, 0.4f);
+            fishingRod.transform.position = pos;
         }
     }
 }
