@@ -288,7 +288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &683640473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canard: {fileID: 0}
-  PrefabPiranha: {fileID: 8569296471235243785, guid: fa895cf5525c3774c95e45e852b83ec9, type: 3}
+  PrefabPiranha: {fileID: 919132149155446097, guid: 599d9a59ca447534e8fff50df8e5ba49, type: 3}
   PrefabAnguille: {fileID: 5267624438143466227, guid: 7b20422b4b8f4ed4bae655d34d4cabaf, type: 3}
   PrefabRequin: {fileID: 6233567854747703980, guid: 62f575d71b1df824fa6bfe6defd37c8c, type: 3}
   vitesseDeSpawnPiranha: 10
