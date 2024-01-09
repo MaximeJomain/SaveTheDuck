@@ -428,7 +428,8 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6795168139310772769, guid: 11091189a8fb8284b85d8925ded4328b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -454,14 +455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vieCanardVie: 100
-  vitesseCanard: 5
-  RigidBodyCanard: {fileID: 1162270431}
+  vitesseCanard: 10
   Canard: {fileID: 0}
---- !u!54 &1162270431 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 6795168139310772769, guid: 11091189a8fb8284b85d8925ded4328b, type: 3}
-  m_PrefabInstance: {fileID: 986701397}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1235262477
 GameObject:
   m_ObjectHideFlags: 0
