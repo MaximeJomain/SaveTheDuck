@@ -48,9 +48,9 @@ public class GameManager : MonoBehaviour
         if (_isPlaying) {
             _elapsedTime += Time.deltaTime;
 
-            if (HighScore < Time.deltaTime)
+            if (HighScore < _elapsedTime)
             {
-                HighScore = Time.deltaTime;
+                HighScore = _elapsedTime;
             }
             UpdateHighScore();
 
@@ -124,6 +124,9 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHighScore()
     {
-        HighScoreText.SetText("High Score : {0:00}:{1:00}", HighScore);
+        int minutesHighScore = Mathf.FloorToInt(HighScore / 60F);
+        int secondsHighScore = Mathf.FloorToInt(HighScore - minutesHighScore * 60);
+        string formattedTimeHighScore = string.Format("{0:00}:{1:00}", minutesHighScore, secondsHighScore);
+        HighScoreText.text = formattedTimeHighScore;
     }
 }
