@@ -79,13 +79,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(PlayScreen);
     }
 
-    public void Play()
-    {
-        PauseScreen.SetActive(false);
-        Audio.gameObject.SetActive(true);
-        Time.timeScale = 1f;
-    }
-
     public void MainMenu() {
         SceneManager.LoadScene(MenuScreen);
     }
