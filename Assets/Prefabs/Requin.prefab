@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vieRequin: 3
-  vitesseRequin: 100
+  vitesseRequin: 50
 --- !u!1 &5219038049329004397
 GameObject:
   m_ObjectHideFlags: 0

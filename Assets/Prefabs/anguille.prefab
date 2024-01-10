@@ -96,8 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vieAnguille: 2
-  degatAnguille: 25
-  vitesseAnguille: 50
+  vitesseAnguille: 65
 --- !u!1001 &4850993785228081631
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class SpawnerScript : MonoBehaviour
     public float spawnRate;
     private float elapsedTime;
     
-    [SerializeField]
     private float useSpawnRate;
 
     public GameObject PrefabPiranha;
@@ -40,7 +39,7 @@ public class SpawnerScript : MonoBehaviour
 
     [Header("Spawner")]
     public Transform[] Points;
-    public float spawnRateIncrease;
+    public float spawnRateIncrease = 30f;
 
     private void Awake()
     {
