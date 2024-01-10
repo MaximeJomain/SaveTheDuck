@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
+    [Header("Params")]
     public float catchForce;
     public Transform lineEnd;
     public float throwSpeed;
+    public float throwCooldown;
+    
+    [Header("Audio")]
+    public AudioClip catchSFX;
+    private AudioSource audioSource;
     
     [HideInInspector]
     public bool canThrow;
-    public float throwCooldown;
     
     private SphereCollider _sphereCollider;
     private Camera mainCamera;
@@ -23,6 +28,7 @@ public class Hook : MonoBehaviour
     {
         _sphereCollider = GetComponent<SphereCollider>();
         mainCamera = Camera.main;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -55,6 +61,7 @@ public class Hook : MonoBehaviour
             {
                 fishingRodAnimator.SetTrigger("Catch");
             }
+            audioSource.PlayOneShot(catchSFX);
             enemy.GetCaught(mainCamera.transform.position, catchForce);
             DisableThrow();
         }

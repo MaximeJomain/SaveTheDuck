@@ -10,6 +10,8 @@ public interface IEnemy
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip fishingSFX;
+    
     [Header("Fishing Rod Prefab")]
     public GameObject fishingRod;
     public Transform lineStart;
@@ -27,12 +29,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 v1, v2;
     private Hook hook;
     private Animator fishingRodAnimator;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         mainCamera = Camera.main;
         hook = hookPrefab.GetComponent<Hook>();
         fishingRodAnimator = fishingRod.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         hook.canThrow = false;
         fishingRodAnimator.SetTrigger("ThrowLine");
+        audioSource.PlayOneShot(fishingSFX);
         yield return new WaitForSeconds(.3f);
         hook.MoveToTarget(hitInfoPoint, animator);
     }
