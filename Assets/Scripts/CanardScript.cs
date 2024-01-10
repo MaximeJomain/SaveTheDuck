@@ -12,7 +12,8 @@ public class CanardScript : MonoBehaviour
 
     public TMP_Text TMP_VieCanard;
 
-    private void Awake() {
+    private void Awake() 
+    {
         TMP_VieCanard = GameObject.Find("/Canard/Canvas/Vie").GetComponent<TMP_Text>();
     }
 

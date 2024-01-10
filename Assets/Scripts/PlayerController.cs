@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         fishLine.SetVertexCount(2);
         fishLine.SetPosition(0, v1);
         fishLine.SetPosition(1, v2);
-        fishLine.material = new Material(Shader.Find("Diffuse"));
+        fishLine.material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
     }
 
     private void Update()

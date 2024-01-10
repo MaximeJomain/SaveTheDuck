@@ -36,7 +36,7 @@ public class Hook : MonoBehaviour
     {
         if (!isThrow)
         {
-            transform.position = Vector3.Lerp(transform.position, lineEnd.position, throwSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, lineEnd.position, throwSpeed * 0.5f * Time.deltaTime);
         }
 
         if (isThrow)

@@ -19,13 +19,14 @@ public class GameManager : MonoBehaviour
     public GameObject Audio;
 
 
-    public CanardScript Canard;
+    private CanardScript Canard;
 
     public bool Pause;
 
     private void Awake()
     {
         TMP_Timer = GameObject.Find("/Canvas/Timer").GetComponent<TMP_Text>();
+        Canard = GameObject.Find("Canard").GetComponent<CanardScript>();
     }
 
     private void Start()

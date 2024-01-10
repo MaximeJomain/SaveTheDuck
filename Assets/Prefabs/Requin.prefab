@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6460614890851684178}
   - component: {fileID: 6903020243659150972}
   m_Layer: 2
-  m_Name: SHARK
+  m_Name: Requin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,8 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vieRequin: 3
-  degatRequin: 50
-  vitesseRequin: 30
+  vitesseRequin: 100
 --- !u!1 &5219038049329004397
 GameObject:
   m_ObjectHideFlags: 0
