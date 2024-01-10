@@ -3464,7 +3464,7 @@ MonoBehaviour:
   PauseScreen: {fileID: 1846874036}
   Audio: {fileID: 2115129878}
   Pause: 0
-  HighScoreText: {fileID: 0}
+  HighScoreText: {fileID: 527363301}
 --- !u!4 &1752942185
 Transform:
   m_ObjectHideFlags: 0
