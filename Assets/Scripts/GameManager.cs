@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        PauseScreen.SetActive(false);
+        Audio.gameObject.SetActive(true);
+        Time.timeScale = 1f;
+
         _elapsedTime = 0f;
         _isPlaying = true;
     }
