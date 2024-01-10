@@ -10,23 +10,23 @@ public interface IEnemy
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Fishing Rod Prefab")]
     public GameObject fishingRod;
     public Transform lineStart;
     public GameObject hookPrefab;
-    
-    private Camera mainCamera;
-    private LineRenderer fishLine;
-    private Vector3 v1, v2;
-    private Hook hook;
-    private Animator fishingRodAnimator;
     
     [Header("Fishing Rod Settings")]
     public float minX;
     public float maxX;
     public float minZ;
     public float maxZ;
-    public float setY;
     public float rodSpeed;
+    
+    private Camera mainCamera;
+    private LineRenderer fishLine;
+    private Vector3 v1, v2;
+    private Hook hook;
+    private Animator fishingRodAnimator;
 
     private void Awake()
     {
@@ -97,9 +97,6 @@ public class PlayerController : MonoBehaviour
 
     private void MoveMouse()
     {
-        fishingRod.transform.position =
-            new Vector3(fishingRod.transform.position.x, setY, fishingRod.transform.position.z);
-        
         if (Input.GetAxis("Mouse X") > 0 
             || Input.GetAxis("Mouse X") < 0)
         {
