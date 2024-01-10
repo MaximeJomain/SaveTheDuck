@@ -2,37 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RequinScript : MonoBehaviour
+public class RequinScript : MonoBehaviour, IEnemy
 {
     public int vieRequin = 3;
 
     public int degatRequin = 50;
 
-    public int vitesseRequin = 3;
+    public int vitesseRequin;
 
 
-    public GameObject Canard;
-
-    public Rigidbody RigidBodyRequin;
+    private Transform Canard;
+    private bool isDead;
+    private new Rigidbody rigidbody;
+    private new Collider collider;
 
 
     private void Awake()
     {
-        Canard = GameObject.Find("Canard");
+        Canard = GameObject.Find("Canard").transform;
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
+        isDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 vector3 = new Vector3(Canard.transform.position.x - transform.position.x, RigidBodyRequin.velocity.y, Canard.transform.position.z - transform.position.z);
-        vector3.Normalize();
-        RigidBodyRequin.velocity = vector3 * vitesseRequin;
+        if (isDead) return;
+        
+        Vector3 playerPos = new Vector3(Canard.position.x, transform.position.y, Canard.position.z);
+        transform.LookAt(playerPos);
+
+        rigidbody.velocity = transform.forward * (vitesseRequin * Time.deltaTime);
     }
 
     public int GetVieRequin()
@@ -48,5 +54,18 @@ public class RequinScript : MonoBehaviour
     public void SetVieRequin(int degat)
     {
         vieRequin = vieRequin - degat;
+    }
+
+    public void GetCaught(Vector3 direction, float force)
+    {
+        if (!isDead)
+        {
+            collider.enabled = false;
+            rigidbody.AddForce(transform.position + direction * force);
+            Debug.Log("IEnemy " + transform.gameObject.name);
+            isDead = true;
+            
+            Destroy(gameObject, 2f);
+        }
     }
 }

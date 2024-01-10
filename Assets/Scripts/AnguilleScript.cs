@@ -2,37 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnguilleScript : MonoBehaviour
+public class AnguilleScript : MonoBehaviour, IEnemy
 {
     public int vieAnguille = 2;
 
     public int degatAnguille = 25;
 
-    public int vitesseAnguille = 2;
+    public int vitesseAnguille;
 
 
-    public GameObject Canard;
-
-    public Rigidbody RigidBodyAnguille;
+    private Transform Canard;
+    private Rigidbody RigidBodyAnguille;
+    private bool isDead;
+    private new Rigidbody rigidbody;
+    private new Collider collider;
 
 
     private void Awake()
     {
-        Canard = GameObject.Find("Canard");
+        Canard = GameObject.Find("Canard").transform;
+        RigidBodyAnguille = GetComponent<Rigidbody>();
+        
+        rigidbody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
     }
-
-    // Start is called before the first frame update
-    void Start()
+    
+    private void Start()
     {
-
+        isDead = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        Vector3 vector3 = new Vector3(Canard.transform.position.x - transform.position.x, RigidBodyAnguille.velocity.y, Canard.transform.position.z - transform.position.z);
-        vector3.Normalize();
-        RigidBodyAnguille.velocity = vector3 * vitesseAnguille;
+        if (isDead) return;
+        
+        Vector3 playerPos = new Vector3(Canard.position.x, transform.position.y, Canard.position.z);
+        transform.LookAt(playerPos);
+
+        RigidBodyAnguille.velocity = transform.forward * (vitesseAnguille * Time.deltaTime);
     }
 
     public int GetVieAnguille()
@@ -48,5 +55,18 @@ public class AnguilleScript : MonoBehaviour
     public void SetVieAnguille(int degat)
     {
         vieAnguille = vieAnguille - degat;
+    }
+
+    public void GetCaught(Vector3 direction, float force)
+    {
+        if (!isDead)
+        {
+            collider.enabled = false;
+            rigidbody.AddForce(transform.position + direction * force);
+            Debug.Log("IEnemy " + transform.gameObject.name);
+            isDead = true;
+            
+            Destroy(gameObject, 2f);
+        }
     }
 }
