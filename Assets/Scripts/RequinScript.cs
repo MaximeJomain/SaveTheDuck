@@ -6,8 +6,6 @@ public class RequinScript : MonoBehaviour, IEnemy
 {
     public int vieRequin = 3;
 
-    public int degatRequin = 50;
-
     public int vitesseRequin;
 
 
@@ -44,11 +42,6 @@ public class RequinScript : MonoBehaviour, IEnemy
     public int GetVieRequin()
     {
         return vieRequin;
-    }
-
-    public int GetDegatRequin()
-    {
-        return degatRequin;
     }
 
     public void SetVieRequin(int degat)

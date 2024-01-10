@@ -7,8 +7,6 @@ public class PiranhaScript : MonoBehaviour, IEnemy
 {
     public int viePiranha = 1;
 
-    public int degatPiranha = 10;
-
     public float vitessePiranha;
     
     private Transform Canard;
@@ -44,11 +42,6 @@ public class PiranhaScript : MonoBehaviour, IEnemy
     public int GetViePiranha()
     {
         return viePiranha;
-    }
-
-    public int GetDegatPiranha()
-    {
-        return degatPiranha;
     }
 
     public void SetViePiranha(int degat)

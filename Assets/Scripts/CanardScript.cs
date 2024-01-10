@@ -53,13 +53,13 @@ public class CanardScript : MonoBehaviour
         if (collision.gameObject.name == "Anguille(Clone)")
         {
             Debug.Log("Anguille");
-            this.SetVieCanard(20);
+            this.SetVieCanard(25);
         }
 
         if (collision.gameObject.name == "Requin(Clone)")
         {
             Debug.Log("Requin");
-            this.SetVieCanard(30);
+            this.SetVieCanard(50);
         }
     }
 }
