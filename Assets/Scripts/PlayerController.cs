@@ -12,27 +12,27 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject fishingRod;
     public Transform lineStart;
-    public GameObject scriptTarget;
-
+    public GameObject hookPrefab;
+    
+    private Camera mainCamera;
+    private LineRenderer fishLine;
+    private Vector3 v1, v2;
+    private Hook hook;
+    private Animator fishingRodAnimator;
+    
     [Header("Fishing Rod Settings")]
     public float minX;
     public float maxX;
     public float minZ;
     public float maxZ;
+    public float setY;
     public float rodSpeed;
-
-    private Camera mainCamera;
-    private Animator animator;
-    private LineRenderer fishLine;
-    private Vector3 v1, v2;
-
-    [SerializeField]
-    private Hook hook;
 
     private void Awake()
     {
         mainCamera = Camera.main;
-        animator = GetComponent<Animator>();
+        hook = hookPrefab.GetComponent<Hook>();
+        fishingRodAnimator = fishingRod.GetComponent<Animator>();
     }
 
     private void Start()
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         
         fishLine = fishingRod.gameObject.AddComponent<LineRenderer>();
         v1 = lineStart.position;
-        v2 = scriptTarget.transform.position;
+        v2 = hookPrefab.transform.position;
         fishLine.SetColors(Color.green, Color.green);
         fishLine.SetWidth(0.005f, 0.007f);
         fishLine.SetVertexCount(2);
@@ -53,41 +53,53 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MoveMouse();
-
         HandleFishing();
     }
 
     private void HandleFishing()
     {
-
         v1 = lineStart.position;
         fishLine.SetPosition(0, v1);
-        v2 = scriptTarget.transform.position;
+        v2 = hookPrefab.transform.position;
         fishLine.SetPosition(1, v2);
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)
+            && hook.canThrow
             && Physics.Raycast(ray, out RaycastHit hit, 100))
         {
+            Debug.Log("RAYCAST " + hit.transform.gameObject.name);
             if (hit.transform.CompareTag("Water")
                 || hit.transform.CompareTag("Enemy"))
             {
-                StartCoroutine(FishAction(hit.point));
+                StartCoroutine(FishAction(hit.point, fishingRodAnimator));
+                // StartCoroutine(FishAction(hit.point));
             }
         }
     }
 
-    private IEnumerator FishAction(Vector3 target)
+    private IEnumerator FishAction(Vector3 hitInfoPoint, Animator animator)
     {
-        animator.SetTrigger("ThrowLine");
-        
+        hook.canThrow = false;
+        fishingRodAnimator.SetTrigger("ThrowLine");
         yield return new WaitForSeconds(.3f);
-        hook.ThrowHook(target);
+        hook.MoveToTarget(hitInfoPoint, animator);
     }
+
+    // private IEnumerator FishAction(Vector3 target)
+    // {
+    //     fishingRodAnimator.SetTrigger("ThrowLine");
+    //     
+    //     yield return new WaitForSeconds(.3f);
+    //     hook.ThrowHook(target, fishingRodAnimator);
+    // }
 
     private void MoveMouse()
     {
+        fishingRod.transform.position =
+            new Vector3(fishingRod.transform.position.x, setY, fishingRod.transform.position.z);
+        
         if (Input.GetAxis("Mouse X") > 0 
             || Input.GetAxis("Mouse X") < 0)
         {
@@ -96,7 +108,6 @@ public class PlayerController : MonoBehaviour
             pos.x = Mathf.Clamp(fishingRod.transform.position.x, minX, maxX);
             fishingRod.transform.position = pos;
         }
-        
         
         if (Input.GetAxis("Mouse Y") > 0 
             || Input.GetAxis("Mouse Y") < 0)

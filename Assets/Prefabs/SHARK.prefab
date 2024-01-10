@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2127708848087234692}
   - component: {fileID: 6460614890851684178}
   - component: {fileID: 6903020243659150972}
-  m_Layer: 0
-  m_Name: Shark
+  m_Layer: 2
+  m_Name: SHARK
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4838677826870765015}
   - component: {fileID: 8397441225619139186}
   - component: {fileID: 6011534763967323832}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SHARK
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,9 +6,18 @@ using UnityEngine;
 public class Hook : MonoBehaviour
 {
     public float catchForce;
+    public Transform lineEnd;
+    public float throwSpeed;
+    
+    [HideInInspector]
+    public bool canThrow;
+    public float throwCooldown;
     
     private SphereCollider _sphereCollider;
     private Camera mainCamera;
+    private Animator fishingRodAnimator;
+    private bool isThrow;
+    private Vector3 targetPosition;
 
     private void Awake()
     {
@@ -19,20 +28,65 @@ public class Hook : MonoBehaviour
     private void Start()
     {
         _sphereCollider.enabled = false;
+        isThrow = false;
+        canThrow = true;
+    }
+
+    private void Update()
+    {
+        if (!isThrow)
+        {
+            transform.position = Vector3.Lerp(transform.position, lineEnd.position, throwSpeed * Time.deltaTime);
+        }
+
+        if (isThrow)
+        {
+            // transform.position = targetPosition;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, throwSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("TRIGGERENTER " + other.gameObject.name);
         IEnemy enemy = (IEnemy)other.transform.GetComponent(typeof(IEnemy));
         if (enemy != null)
         {
+            if (fishingRodAnimator)
+            {
+                fishingRodAnimator.SetTrigger("Catch");
+            }
             enemy.GetCaught(mainCamera.transform.position, catchForce);
+            DisableThrow();
+        }
+        else
+        {
+            DisableThrow();
         }
     }
 
-    public void ThrowHook(Vector3 position)
+    private void DisableThrow()
     {
+        isThrow = false;
+        targetPosition = Vector3.zero;
+        _sphereCollider.enabled = false;
+        Invoke("setCanThrowTrue", throwCooldown);
+    }
+
+    public void MoveToTarget(Vector3 hitInfoPoint, Animator animator)
+    {
+        if (!fishingRodAnimator)
+        {
+            fishingRodAnimator = animator;
+        }
+
+        isThrow = true;
+        targetPosition = hitInfoPoint;
         _sphereCollider.enabled = true;
-        transform.position = position;
+    }
+
+    private void setCanThrowTrue()
+    {
+        canThrow = true;
     }
 }

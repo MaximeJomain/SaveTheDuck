@@ -60,10 +60,9 @@ public class RequinScript : MonoBehaviour, IEnemy
     {
         if (!isDead)
         {
+            isDead = true;
             collider.enabled = false;
             rigidbody.AddForce(transform.position + direction * force);
-            Debug.Log("IEnemy " + transform.gameObject.name);
-            isDead = true;
             
             Destroy(gameObject, 2f);
         }
