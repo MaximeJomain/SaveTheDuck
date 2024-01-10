@@ -6,8 +6,6 @@ public class AnguilleScript : MonoBehaviour, IEnemy
 {
     public int vieAnguille = 2;
 
-    public int degatAnguille = 25;
-
     public int vitesseAnguille;
 
 
@@ -45,11 +43,6 @@ public class AnguilleScript : MonoBehaviour, IEnemy
     public int GetVieAnguille()
     {
         return vieAnguille;
-    }
-
-    public int GetDegatAnguille()
-    {
-        return degatAnguille;
     }
 
     public void SetVieAnguille(int degat)
