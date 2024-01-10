@@ -48,7 +48,6 @@ public class Hook : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGERENTER " + other.gameObject.name);
         IEnemy enemy = (IEnemy)other.transform.GetComponent(typeof(IEnemy));
         if (enemy != null)
         {

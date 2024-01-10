@@ -9,6 +9,12 @@ public class SpawnerScript : MonoBehaviour
 {
     private CanardScript Canard;
 
+    [Range(0.5f, 2)]
+    public float spawnRate;
+    private float elapsedTime;
+    
+    [SerializeField]
+    private float useSpawnRate;
 
     public GameObject PrefabPiranha;
 
@@ -17,82 +23,104 @@ public class SpawnerScript : MonoBehaviour
     public GameObject PrefabRequin;
 
 
-    public float vitesseDeSpawnPiranha = 10;
+    public float vitesseDeSpawnPiranha;
 
-    public float vitesseDeSpawnAnguille = 30;
+    public float vitesseDeSpawnAnguille;
 
-    public float vitesseDeSpawnRequin = 60;
+    public float vitesseDeSpawnRequin;
 
-    public float nouveauSpawnPiranha = 0;
+    private float nouveauSpawnPiranha;
 
-    public float nouveauSpawnAnguille = 0;
+    private float nouveauSpawnAnguille;
 
-    public float nouveauSpawnRequin = 0;
-    
-    public int nombreDeSpawn;
-
-    public int nombreMaxDeSpawn;
+    private float nouveauSpawnRequin;
 
     private int nombreDePrefab;
+    private int spawnIndex;
 
     [Header("Spawner")]
     public Transform[] Points;
+    public float spawnRateIncrease;
 
     private void Awake()
     {
         Canard = GameObject.Find("Canard").GetComponent<CanardScript>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (Time.time > nouveauSpawnPiranha) {
-            nouveauSpawnPiranha = Time.time + vitesseDeSpawnPiranha;
+        spawnIndex = 0;
+        elapsedTime = 0f;
+        useSpawnRate = spawnRate;
+        nouveauSpawnPiranha = vitesseDeSpawnPiranha;
+        nouveauSpawnAnguille = vitesseDeSpawnAnguille;
+        nouveauSpawnRequin = vitesseDeSpawnRequin;
+    }
 
-            int rand = Random.Range(0, Points.Length);
-            Instantiate(PrefabPiranha, Points[rand].transform.position, Quaternion.identity);
+    private void Update()
+    {
+        elapsedTime += Time.deltaTime * useSpawnRate;
 
-            // switch (Int)
-            // {
-            //     case 0: Instantiate(PrefabPiranha, new Vector3(-2.25f, Canard.transform.position.y, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0,270,0)); break;
-            //     case 1: Instantiate(PrefabPiranha, new Vector3(2.25f, Canard.transform.position.y, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 270, 0)); break;
-            //     case 2: Instantiate(PrefabPiranha, new Vector3(Random.Range(-2.25f, 2.25f), Canard.transform.position.y, -0.6f), Quaternion.Euler(0, 270, 0)); break;
-            //     case 3: Instantiate(PrefabPiranha, new Vector3(Random.Range(-2.25f, 2.25f), Canard.transform.position.y, 0.6f), Quaternion.Euler(0, 270, 0)); break;
-            // }
-        }
-
-        if (Time.time > nouveauSpawnAnguille)
+        if (elapsedTime >= 3f)
         {
-            nouveauSpawnAnguille = Time.time + vitesseDeSpawnAnguille;
-            
+            elapsedTime = 0f;
             int rand = Random.Range(0, Points.Length);
-            Instantiate(PrefabAnguille, Points[rand].transform.position, Quaternion.identity);
-        
-            // int Int = Random.Range(0, 4);
-            // switch (Int)
-            // {
-            //     case 0: Instantiate(PrefabAnguille, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
-            //     case 1: Instantiate(PrefabAnguille, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(0, 90, 0)); break;
-            //     case 2: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(0, 90, 0)); break;
-            //     case 3: Instantiate(PrefabAnguille, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(0, 90, 0)); break;
-            // }
+
+            switch (spawnIndex)
+            {
+                case 0: 
+                    Instantiate(PrefabPiranha, Points[rand].position, Quaternion.identity);
+                    break;
+                    
+                case 1: 
+                    Instantiate(PrefabAnguille, Points[rand].transform.position, Quaternion.identity);
+                    break;
+                
+                case 2: 
+                    Instantiate(PrefabPiranha, Points[rand].position, Quaternion.identity);
+                    break;
+                
+                case 3: 
+                    Instantiate(PrefabRequin, Points[rand].transform.position, Quaternion.identity);
+                    break;
+                
+                default:
+                    Instantiate(PrefabPiranha, Points[rand].position, Quaternion.identity);
+                    break;
+            }
+            
+            spawnIndex++;
         }
-        
-        if (Time.time > nouveauSpawnRequin)
+
+        if (spawnIndex >= 4)
         {
-            nouveauSpawnRequin = Time.time + vitesseDeSpawnRequin;
-            
-            int rand = Random.Range(0, Points.Length);
-            Instantiate(PrefabRequin, Points[rand].transform.position, Quaternion.identity);
-        
-            // int Int = Random.Range(0, 4);
-            // switch (Int)
-            // {
-            //     case 0: Instantiate(PrefabRequin, new Vector3(-2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
-            //     case 1: Instantiate(PrefabRequin, new Vector3(2.25f, 1.5f, Random.Range(-0.6f, 0.6f)), Quaternion.Euler(270, 180, 0)); break;
-            //     case 2: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 1.5f, -0.6f), Quaternion.Euler(270, 180, 0)); break;
-            //     case 3: Instantiate(PrefabRequin, new Vector3(Random.Range(-2.25f, 2.25f), 0.15f, 0.6f), Quaternion.Euler(270, 180, 0)); break;
-            // }
+            spawnIndex = 0;
         }
+
+        useSpawnRate += Time.deltaTime/spawnRateIncrease;
+
+        // if (elapsedTime >= nouveauSpawnPiranha)
+        // {
+        //     int rand = Random.Range(0, Points.Length);
+        //     Instantiate(PrefabPiranha, Points[rand].position, Quaternion.identity);
+        //
+        //     nouveauSpawnPiranha = elapsedTime + vitesseDeSpawnPiranha;
+        // }
+        //
+        // if (elapsedTime > nouveauSpawnAnguille)
+        // {
+        //     int rand = Random.Range(0, Points.Length);
+        //     Instantiate(PrefabAnguille, Points[rand].transform.position, Quaternion.identity);
+        //     
+        //     nouveauSpawnAnguille = elapsedTime + vitesseDeSpawnPiranha;
+        // }
+        //
+        // if (elapsedTime > nouveauSpawnRequin)
+        // {
+        //     int rand = Random.Range(0, Points.Length);
+        //     Instantiate(PrefabRequin, Points[rand].transform.position, Quaternion.identity);
+        //     
+        //     nouveauSpawnRequin = elapsedTime + vitesseDeSpawnPiranha;
+        // }
     }
 }

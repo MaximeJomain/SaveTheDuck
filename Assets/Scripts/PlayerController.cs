@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
             && hook.canThrow
             && Physics.Raycast(ray, out RaycastHit hit, 100))
         {
-            Debug.Log("RAYCAST " + hit.transform.gameObject.name);
             if (hit.transform.CompareTag("Water")
                 || hit.transform.CompareTag("Enemy"))
             {
