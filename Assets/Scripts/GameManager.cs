@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     public bool Pause;
 
+    public TMP_Text HighScoreText;
+    private float HighScore;
+
     private void Awake()
     {
         TMP_Timer = GameObject.Find("/Canvas/Timer").GetComponent<TMP_Text>();
@@ -36,12 +39,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         _elapsedTime = 0f;
         _isPlaying = true;
+
+        HighScore = PlayerPrefs.GetFloat("HighScore", HighScore);
     }
 
     private void Update()
     {
         if (_isPlaying) {
             _elapsedTime += Time.deltaTime;
+
+            if (HighScore < Time.deltaTime)
+            {
+                HighScore = Time.deltaTime;
+            }
+            UpdateHighScore();
 
             if (Canard.isAlive() == false)
             {
@@ -110,5 +121,16 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+    }
+
+    void OnDestroy()
+    {
+        PlayerPrefs.SetFloat("HighScore", HighScore);
+        PlayerPrefs.Save();
+    }
+
+    public void UpdateHighScore()
+    {
+        HighScoreText.SetText("High Score : {0:00}:{1:00}", HighScore);
     }
 }
