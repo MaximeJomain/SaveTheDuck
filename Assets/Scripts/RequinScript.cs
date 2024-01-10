@@ -7,10 +7,13 @@ public class RequinScript : MonoBehaviour, IEnemy
     public int vieRequin = 3;
     public int damage;
     public int vitesseRequin;
+    public int scoreValue;
+
     private Transform Canard;
     private bool isDead;
     private new Rigidbody rigidbody;
     private new Collider collider;
+    private GameManager gameManager;
     
     private AudioSource _audioSource;
     public AudioClip attackSound;
@@ -23,6 +26,7 @@ public class RequinScript : MonoBehaviour, IEnemy
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         _audioSource = GetComponent<AudioSource>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     private void Start()
@@ -57,6 +61,7 @@ public class RequinScript : MonoBehaviour, IEnemy
         if (!isDead)
         {
             isDead = true;
+            gameManager.Score += scoreValue;
             collider.enabled = false;
             rigidbody.AddForce(transform.position + direction * force);
             

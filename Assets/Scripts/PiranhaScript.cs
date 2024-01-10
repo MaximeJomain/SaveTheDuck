@@ -7,6 +7,7 @@ public class PiranhaScript : MonoBehaviour, IEnemy
 {
     public int viePiranha = 1;
     public int damage;
+    public int scoreValue;
 
     public float vitessePiranha;
     
@@ -15,6 +16,7 @@ public class PiranhaScript : MonoBehaviour, IEnemy
     private bool isDead;
     private new Rigidbody rigidbody;
     private new Collider collider;
+    private GameManager gameManager;
     
     public AudioClip attackSound;
     private AudioSource _audioSource;
@@ -29,6 +31,7 @@ public class PiranhaScript : MonoBehaviour, IEnemy
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         _audioSource = GetComponent<AudioSource>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     private void Start()
@@ -62,9 +65,9 @@ public class PiranhaScript : MonoBehaviour, IEnemy
         if (!isDead)
         {
             isDead = true;
+            gameManager.Score += scoreValue;
             collider.enabled = false;
             rigidbody.AddForce(transform.position + direction * force);
-            
             Destroy(gameObject, 2f);
         }
     }

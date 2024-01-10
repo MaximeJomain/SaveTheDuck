@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 743078621841904300}
   - component: {fileID: 7212633826819507720}
   - component: {fileID: 2828105395433793556}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Duck
   m_TagString: Duck
   m_Icon: {fileID: 0}
@@ -71,7 +71,6 @@ MonoBehaviour:
   MaxVieCanard: 100
   Health: 100
   _isAlive: 1
-  TMP_VieCanard: {fileID: 0}
 --- !u!114 &2828105395433793556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 52a5c79626e2e334b8db8a19c4fdf05f, type: 3}
       propertyPath: m_Name
       value: DUCK
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 52a5c79626e2e334b8db8a19c4fdf05f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

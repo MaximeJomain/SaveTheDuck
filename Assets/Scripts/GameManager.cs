@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     private TMP_Text TMP_Timer;
     private float _elapsedTime;
     private bool _isPlaying;
-
+    
+    [FormerlySerializedAs("_score")]
+    [HideInInspector]
+    public int Score;
 
     public string PlayScreen;
     public string MenuScreen;
@@ -24,7 +28,7 @@ public class GameManager : MonoBehaviour
     public bool Pause;
 
     public TMP_Text HighScoreText;
-    private float HighScore;
+    private int HighScore;
 
     private void Awake()
     {
@@ -40,17 +44,23 @@ public class GameManager : MonoBehaviour
         _elapsedTime = 0f;
         _isPlaying = true;
 
-        HighScore = PlayerPrefs.GetFloat("HighScore", HighScore);
+        HighScore = PlayerPrefs.GetInt("HighScore", HighScore);
     }
 
     private void Update()
     {
-        if (_isPlaying) {
+        if (_isPlaying)
+        {
             _elapsedTime += Time.deltaTime;
-
-            if (HighScore < _elapsedTime)
+            if (_elapsedTime >= 1f)
             {
-                HighScore = _elapsedTime;
+                _elapsedTime = 0f;
+                Score += 3;
+            }
+
+            if (HighScore < Score)
+            {
+                HighScore = Score;
             }
             UpdateHighScore();
 
@@ -69,10 +79,13 @@ public class GameManager : MonoBehaviour
     private void handleGUI()
     {
         // update Timer
-        int minutes = Mathf.FloorToInt(_elapsedTime / 60F);
-        int seconds = Mathf.FloorToInt(_elapsedTime - minutes * 60);
-        string formattedTime = string.Format("{0:00}:{1:00}", minutes, seconds);
-        TMP_Timer.text = formattedTime;
+        // int minutes = Mathf.FloorToInt(_elapsedTime / 60F);
+        // int seconds = Mathf.FloorToInt(_elapsedTime - minutes * 60);
+        // string formattedTime = string.Format("{0:00}:{1:00}", minutes, seconds);
+        string formattedScore = string.Format("{0:0} pts", Score);
+
+
+        TMP_Timer.text = formattedScore;
     }
 
     public void RePlay() {
@@ -118,15 +131,17 @@ public class GameManager : MonoBehaviour
 
     void OnDestroy()
     {
-        PlayerPrefs.SetFloat("HighScore", HighScore);
+        PlayerPrefs.SetInt("HighScore", HighScore);
         PlayerPrefs.Save();
     }
 
     public void UpdateHighScore()
     {
-        int minutesHighScore = Mathf.FloorToInt(HighScore / 60F);
-        int secondsHighScore = Mathf.FloorToInt(HighScore - minutesHighScore * 60);
-        string formattedTimeHighScore = string.Format("{0:00}:{1:00}", minutesHighScore, secondsHighScore);
-        HighScoreText.text = formattedTimeHighScore;
+        // int minutesHighScore = Mathf.FloorToInt(HighScore / 60F);
+        // int secondsHighScore = Mathf.FloorToInt(HighScore - minutesHighScore * 60);
+        // string formattedTimeHighScore = string.Format("{0:00}:{1:00}", minutesHighScore, secondsHighScore);
+        string formattedScore = string.Format("Highscore : {0:0} pts", HighScore);
+        
+        HighScoreText.text = formattedScore;
     }
 }

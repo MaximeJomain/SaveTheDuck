@@ -6,7 +6,9 @@ public class AnguilleScript : MonoBehaviour, IEnemy
 {
     public int vieAnguille = 2;
     public int damage;
+    public int scoreValue;
     public AudioClip attackSound;
+    
     private AudioSource _audioSource;
 
     public int vitesseAnguille;
@@ -17,6 +19,7 @@ public class AnguilleScript : MonoBehaviour, IEnemy
     private new Rigidbody rigidbody;
     private new Collider collider;
     private bool canAttack;
+    private GameManager gameManager;
 
 
     private void Awake()
@@ -27,6 +30,7 @@ public class AnguilleScript : MonoBehaviour, IEnemy
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         _audioSource = GetComponent<AudioSource>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
     
     private void Start()
@@ -60,6 +64,7 @@ public class AnguilleScript : MonoBehaviour, IEnemy
         if (!isDead)
         {
             isDead = true;
+            gameManager.Score += scoreValue;
             collider.enabled = false;
             rigidbody.AddForce(transform.position + direction * force);
             

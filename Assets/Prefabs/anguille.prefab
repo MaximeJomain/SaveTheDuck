@@ -98,8 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vieAnguille: 2
   damage: 20
+  scoreValue: 300
   attackSound: {fileID: 8300000, guid: 55b26e207d8733f40a4b23dbaaaab5a3, type: 3}
-  vitesseAnguille: 65
+  vitesseAnguille: 75
 --- !u!82 &3601652911488019239
 AudioSource:
   m_ObjectHideFlags: 0

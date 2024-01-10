@@ -400,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viePiranha: 1
   damage: 10
+  scoreValue: 100
   vitessePiranha: 80
   attackSound: {fileID: 8300000, guid: 55b26e207d8733f40a4b23dbaaaab5a3, type: 3}
 --- !u!82 &1314752436169680200

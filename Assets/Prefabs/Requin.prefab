@@ -99,6 +99,7 @@ MonoBehaviour:
   vieRequin: 3
   damage: 30
   vitesseRequin: 50
+  scoreValue: 200
   attackSound: {fileID: 8300000, guid: 55b26e207d8733f40a4b23dbaaaab5a3, type: 3}
 --- !u!82 &8284036741454506342
 AudioSource:
