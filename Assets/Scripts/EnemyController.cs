@@ -25,9 +25,11 @@ public class EnemyController : MonoBehaviour, IEnemy
         if (!isDead)
         {
             collider.enabled = false;
-            rigidbody.AddForce(direction * force);
+            rigidbody.AddForce(transform.position + direction * force);
             Debug.Log("IEnemy " + transform.gameObject.name);
             isDead = true;
+            
+            Destroy(gameObject, 2f);
         }
     }
 }

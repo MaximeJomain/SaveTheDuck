@@ -1,39 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PiranhaScript : MonoBehaviour
+public class PiranhaScript : MonoBehaviour, IEnemy
 {
     public int viePiranha = 1;
 
     public int degatPiranha = 10;
 
-    public float vitessePiranha = 1f;
-
-
-    public GameObject Canard;
-
-    public Rigidbody RigidBodyPiranha;
+    public float vitessePiranha;
+    
+    private Transform Canard;
+    private Rigidbody RigidBodyPiranha;
+    private bool isDead;
+    private new Rigidbody rigidbody;
+    private new Collider collider;
 
     private void Awake()
     {
-        Canard = GameObject.Find("Canard");
+        Canard = GameObject.Find("Canard").transform;
+        RigidBodyPiranha = GetComponent<Rigidbody>();
+        
+        rigidbody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
+        isDead = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 vector3 = new Vector3(Canard.transform.position.x - transform.position.x, RigidBodyPiranha.velocity.y, Canard.transform.position.z - transform.position.z);
-        vector3.Normalize();
-        RigidBodyPiranha.velocity = vector3 * vitessePiranha;
+        if (isDead) return;
+        
+        Vector3 playerPos = new Vector3(Canard.position.x, transform.position.y, Canard.position.z);
+        transform.LookAt(playerPos);
 
-
+        RigidBodyPiranha.velocity = transform.forward * (vitessePiranha * Time.deltaTime);
     }
 
     public int GetViePiranha()
@@ -49,5 +54,18 @@ public class PiranhaScript : MonoBehaviour
     public void SetViePiranha(int degat)
     {
         viePiranha = viePiranha - degat;
+    }
+
+    public void GetCaught(Vector3 direction, float force)
+    {
+        if (!isDead)
+        {
+            collider.enabled = false;
+            rigidbody.AddForce(transform.position + direction * force);
+            Debug.Log("IEnemy " + transform.gameObject.name);
+            isDead = true;
+            
+            Destroy(gameObject, 2f);
+        }
     }
 }
