@@ -15,9 +15,13 @@ public class GameManager : MonoBehaviour
     public string PlayScreen;
     public string MenuScreen;
     public GameObject GameOverScreen;
+    public GameObject PauseScreen;
+    public GameObject Audio;
 
-   
+
     public CanardScript Canard;
+
+    public bool Pause;
 
     private void Awake()
     {
@@ -38,12 +42,13 @@ public class GameManager : MonoBehaviour
             if (Canard.isAlive() == false)
             {
                 _isPlaying = false;
+                Audio.gameObject.SetActive(false);
                 GameOver();
             }
         }
 
         handleGUI();
-
+        EnPause();
     }
     
     private void handleGUI()
@@ -74,5 +79,25 @@ public class GameManager : MonoBehaviour
 
     public void Quit() {
         Application.Quit();
+    }
+
+    public void EnPause()
+    {
+        if(Input.GetKeyUp(KeyCode.P)) {
+            Pause = !Pause;
+
+            if (Pause)
+            {
+                Time.timeScale = 0f;
+                PauseScreen.SetActive(true);
+                Audio.gameObject.SetActive(false);
+            }
+            else
+            {
+                PauseScreen.SetActive(false);
+                Audio.gameObject.SetActive(true);
+                Time.timeScale = 1f;
+            }
+        }
     }
 }
