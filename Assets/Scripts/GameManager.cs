@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         PauseScreen.SetActive(false);
         Audio.gameObject.SetActive(true);
         Time.timeScale = 1f;
-
         _elapsedTime = 0f;
         _isPlaying = true;
     }
@@ -95,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void EnPause()
     {
-        if(Input.GetKeyUp(KeyCode.P)) {
+        if(Input.GetKeyUp(KeyCode.Escape)) {
             Pause = !Pause;
 
             if (Pause)
