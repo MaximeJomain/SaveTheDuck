@@ -624,7 +624,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1
-  useSpawnRate: 0
   PrefabPiranha: {fileID: 4257976476030390114, guid: b983b3c497fa26c48a7e9ccb8dbeeb6a, type: 3}
   PrefabAnguille: {fileID: 6206694359214053110, guid: dc821ba9876b85e43abf750ece6932dc, type: 3}
   PrefabRequin: {fileID: 4062883550088565970, guid: 803e15ac1d2796a41ac47f6247f4f0b9, type: 3}

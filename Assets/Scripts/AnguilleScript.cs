@@ -5,15 +5,18 @@ using UnityEngine;
 public class AnguilleScript : MonoBehaviour, IEnemy
 {
     public int vieAnguille = 2;
+    public int damage;
+    public AudioClip attackSound;
+    private AudioSource _audioSource;
 
     public int vitesseAnguille;
-
-
+    
     private Transform Canard;
     private Rigidbody RigidBodyAnguille;
     private bool isDead;
     private new Rigidbody rigidbody;
     private new Collider collider;
+    private bool canAttack;
 
 
     private void Awake()
@@ -23,10 +26,12 @@ public class AnguilleScript : MonoBehaviour, IEnemy
         
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+        _audioSource = GetComponent<AudioSource>();
     }
     
     private void Start()
     {
+        canAttack = true;
         isDead = false;
     }
     
@@ -60,5 +65,23 @@ public class AnguilleScript : MonoBehaviour, IEnemy
             
             Destroy(gameObject, 2f);
         }
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Duck")
+            && canAttack)
+        {
+            canAttack = false;
+            CanardScript canardScript = other.gameObject.GetComponent<CanardScript>();
+            canardScript.SetVieCanard(damage);
+            _audioSource.PlayOneShot(attackSound);
+            Invoke("resetCanAttack", 2f);
+        }
+    }
+
+    private void resetCanAttack()
+    {
+        canAttack = true;
     }
 }

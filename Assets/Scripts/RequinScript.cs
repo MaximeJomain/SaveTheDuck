@@ -5,15 +5,16 @@ using UnityEngine;
 public class RequinScript : MonoBehaviour, IEnemy
 {
     public int vieRequin = 3;
-
+    public int damage;
     public int vitesseRequin;
-
-
     private Transform Canard;
     private bool isDead;
     private new Rigidbody rigidbody;
     private new Collider collider;
-
+    
+    private AudioSource _audioSource;
+    public AudioClip attackSound;
+    private bool canAttack;
 
     private void Awake()
     {
@@ -21,10 +22,12 @@ public class RequinScript : MonoBehaviour, IEnemy
         rigidbody = GetComponent<Rigidbody>();
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
+        canAttack = true;
         isDead = false;
     }
 
@@ -59,5 +62,23 @@ public class RequinScript : MonoBehaviour, IEnemy
             
             Destroy(gameObject, 2f);
         }
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Duck")
+            && canAttack)
+        {
+            canAttack = false;
+            CanardScript canardScript = other.gameObject.GetComponent<CanardScript>();
+            canardScript.SetVieCanard(damage);
+            _audioSource.PlayOneShot(attackSound);
+            Invoke("resetCanAttack", 2f);
+        }
+    }
+
+    private void resetCanAttack()
+    {
+        canAttack = true;
     }
 }

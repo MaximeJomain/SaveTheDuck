@@ -27,8 +27,8 @@ public class CanardScript : MonoBehaviour
         return vieCanardVie;
     }
 
-    public void SetVieCanard(int domage) {
-        vieCanardVie = vieCanardVie - domage;
+    public void SetVieCanard(int damage) {
+        vieCanardVie = vieCanardVie - damage;
     }
 
     public bool isAlive() {
@@ -39,28 +39,5 @@ public class CanardScript : MonoBehaviour
             _isAlive = false;
         }
         return _isAlive;
-    }
-
-    void OnCollisionEnter(Collision collision) {
-        //Debug.Log("Toucher");
-        //this.SetVieCanard(110);
-
-        if (collision.gameObject.name == "Piranha(Clone)")
-        {
-            Debug.Log("Pirana");
-            this.SetVieCanard(10);
-        }
-
-        if (collision.gameObject.name == "Anguille(Clone)")
-        {
-            Debug.Log("Anguille");
-            this.SetVieCanard(25);
-        }
-
-        if (collision.gameObject.name == "Requin(Clone)")
-        {
-            Debug.Log("Requin");
-            this.SetVieCanard(50);
-        }
     }
 }
