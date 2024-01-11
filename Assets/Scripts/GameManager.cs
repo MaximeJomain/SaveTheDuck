@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text HighScoreText;
     private int HighScore;
 
+    public TMP_Text ScoreText;
+
     private void Awake()
     {
         TMP_Timer = GameObject.Find("/Canvas/Timer").GetComponent<TMP_Text>();
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
                 HighScore = Score;
             }
             UpdateHighScore();
+            UpdateScore();
 
             if (Canard.isAlive() == false)
             {
@@ -143,5 +146,11 @@ public class GameManager : MonoBehaviour
         string formattedScore = string.Format("Highscore : {0:0} pts", HighScore);
         
         HighScoreText.text = formattedScore;
+    }
+
+    public void UpdateScore()
+    {
+        string formattedScore2 = string.Format("Score : {0:0} pts", Score);
+        ScoreText.text = formattedScore2;
     }
 }
