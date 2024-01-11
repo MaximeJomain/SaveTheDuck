@@ -100,6 +100,7 @@ MonoBehaviour:
   damage: 30
   vitesseRequin: 15
   scoreValue: 200
+  floatingText: {fileID: 4545449067338120329, guid: a763aaee9a31bfa44855d940ea8d64fe, type: 3}
   attackSound: {fileID: 8300000, guid: 55b26e207d8733f40a4b23dbaaaab5a3, type: 3}
 --- !u!82 &8284036741454506342
 AudioSource:

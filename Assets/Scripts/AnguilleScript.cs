@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AnguilleScript : MonoBehaviour, IEnemy
@@ -9,6 +10,8 @@ public class AnguilleScript : MonoBehaviour, IEnemy
     public int damage;
     public int scoreValue;
     public AudioClip attackSound;
+    public TextMesh floatingText;
+
     
     private AudioSource _audioSource;
 
@@ -21,6 +24,7 @@ public class AnguilleScript : MonoBehaviour, IEnemy
     private new Collider collider;
     private bool canAttack;
     private GameManager gameManager;
+    private Camera mainCamera;
 
 
     private void Awake()
@@ -32,6 +36,7 @@ public class AnguilleScript : MonoBehaviour, IEnemy
         collider = GetComponent<Collider>();
         _audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        mainCamera = Camera.main;
     }
     
     private void Start()
@@ -70,6 +75,8 @@ public class AnguilleScript : MonoBehaviour, IEnemy
         if (!isDead)
         {
             isDead = true;
+            var instance = Instantiate(floatingText, transform.position, Quaternion.LookRotation(mainCamera.transform.position - transform.position, Vector3.forward));
+            instance.GetComponent<TextMesh>().text = "+" + scoreValue;
             gameManager.Score += scoreValue;
             collider.enabled = false;
             rigidbody.AddForce(transform.position + direction * force);

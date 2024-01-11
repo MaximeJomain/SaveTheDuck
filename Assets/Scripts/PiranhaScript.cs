@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PiranhaScript : MonoBehaviour, IEnemy
@@ -8,6 +9,7 @@ public class PiranhaScript : MonoBehaviour, IEnemy
     public int viePiranha = 1;
     public int damage;
     public int scoreValue;
+    public TextMesh floatingText;
 
     public float vitessePiranha;
     
@@ -17,6 +19,7 @@ public class PiranhaScript : MonoBehaviour, IEnemy
     private new Rigidbody rigidbody;
     private new Collider collider;
     private GameManager gameManager;
+    private Camera mainCamera;
     
     public AudioClip attackSound;
     private AudioSource _audioSource;
@@ -32,6 +35,7 @@ public class PiranhaScript : MonoBehaviour, IEnemy
         collider = GetComponent<Collider>();
         _audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        mainCamera = Camera.main;
     }
 
     private void Start()
@@ -71,6 +75,8 @@ public class PiranhaScript : MonoBehaviour, IEnemy
         if (!isDead)
         {
             isDead = true;
+            var instance = Instantiate(floatingText, transform.position, Quaternion.LookRotation(mainCamera.transform.position - transform.position, Vector3.forward));
+            instance.GetComponent<TextMesh>().text = "+" + scoreValue;
             gameManager.Score += scoreValue;
             collider.enabled = false;
             rigidbody.AddForce(transform.position + direction * force);

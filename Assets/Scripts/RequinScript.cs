@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RequinScript : MonoBehaviour, IEnemy
@@ -9,6 +10,7 @@ public class RequinScript : MonoBehaviour, IEnemy
     public int damage;
     public int vitesseRequin;
     public int scoreValue;
+    public TextMesh floatingText;
 
     private Transform Canard;
     private bool isDead;
@@ -19,6 +21,7 @@ public class RequinScript : MonoBehaviour, IEnemy
     private AudioSource _audioSource;
     public AudioClip attackSound;
     private bool canAttack;
+    private Camera mainCamera;
 
     private void Awake()
     {
@@ -28,6 +31,7 @@ public class RequinScript : MonoBehaviour, IEnemy
         collider = GetComponent<Collider>();
         _audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        mainCamera = Camera.main;
     }
 
     private void Start()
@@ -68,6 +72,8 @@ public class RequinScript : MonoBehaviour, IEnemy
         if (!isDead)
         {
             isDead = true;
+            var instance = Instantiate(floatingText, transform.position, Quaternion.LookRotation(mainCamera.transform.position - transform.position, Vector3.forward));
+            instance.GetComponent<TextMesh>().text = "+" + scoreValue;
             gameManager.Score += scoreValue;
             collider.enabled = false;
             rigidbody.AddForce(transform.position + direction * force);
