@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,7 +44,13 @@ public class RequinScript : MonoBehaviour, IEnemy
         Vector3 playerPos = new Vector3(Canard.position.x, transform.position.y, Canard.position.z);
         transform.LookAt(playerPos);
 
-        rigidbody.velocity = transform.forward * (vitesseRequin * Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        if (isDead) return;
+
+        rigidbody.velocity = transform.forward * (vitesseRequin * Time.fixedDeltaTime);
     }
 
     public int GetVieRequin()

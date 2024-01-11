@@ -46,9 +46,15 @@ public class PiranhaScript : MonoBehaviour, IEnemy
         
         Vector3 playerPos = new Vector3(Canard.position.x, transform.position.y, Canard.position.z);
         transform.LookAt(playerPos);
-
-        RigidBodyPiranha.velocity = transform.forward * (vitessePiranha * Time.deltaTime);
     }
+
+    private void FixedUpdate()
+    {
+        if (isDead) return;
+
+        RigidBodyPiranha.velocity = transform.forward * (vitessePiranha * Time.fixedDeltaTime);
+    }
+
 
     public int GetViePiranha()
     {

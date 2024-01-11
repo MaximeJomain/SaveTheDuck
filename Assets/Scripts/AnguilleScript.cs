@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,8 +46,13 @@ public class AnguilleScript : MonoBehaviour, IEnemy
         
         Vector3 playerPos = new Vector3(Canard.position.x, transform.position.y, Canard.position.z);
         transform.LookAt(playerPos);
+    }
 
-        RigidBodyAnguille.velocity = transform.forward * (vitesseAnguille * Time.deltaTime);
+    private void FixedUpdate()
+    {
+        if (isDead) return;
+
+        RigidBodyAnguille.velocity = transform.forward * (vitesseAnguille * Time.fixedDeltaTime);
     }
 
     public int GetVieAnguille()
